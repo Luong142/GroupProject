@@ -7,17 +7,23 @@ public enum EDoorName
 {
     RedDoor = 0, //or whatever you want to name it
     BlueDoor = 1,
-    GreenDoor = 2
+    GreenDoor = 2,
+    FinalDoor = 3
 }
 
 public class DoorController : InteractableObject
 {
     public EDoorName DoorName;
     // Start is called before the first frame update
+
     public GameObject textObjectFront; // Reference to the text object
     public GameObject textObjectBack; // Reference to the text object
+    public GameObject textKeyInsufficient;
+
     public float displayDuration; // Duration to display the text
     public Animator AnimationController;
+
+    // audio
     public AudioSource LockedDoorAudio;
     public AudioSource OpenDoorAudio;
 
@@ -76,8 +82,20 @@ public class DoorController : InteractableObject
             }
             else
             {
-                LockedDoorAudio.Play();    
+                LockedDoorAudio.Play();
+                ShowTextKeyInsufficient();
+                HideTextKeyInsufficient();
             }    
         }
+    }
+
+    public void ShowTextKeyInsufficient()
+    {
+        textKeyInsufficient.SetActive(true);
+    }
+
+    public void HideTextKeyInsufficient()
+    {
+        textKeyInsufficient.SetActive(false);
     }
 }

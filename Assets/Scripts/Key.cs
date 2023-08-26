@@ -37,6 +37,4 @@ public class Key : InteractableObject
         HideText();
         gameObject.SetActive(false);
     }
-
-
 }
